@@ -1,0 +1,310 @@
+<!-- <header  >
+    <div class="bg-white flex justify-between lg:justify-start items-center ">
+        <div class="logo flex-row p-2 w-1/6 ">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSvN9OyE98UW1W5_92EU64vyGYHTAKb4mZ6Y7AtZD9-wW-MwJZb2jTHHGVTP_Ajf_uGg&usqp=CAU" width="210" alt="">
+        </div>
+        <div class="links lg:block w-1/6 md:w-4/6">
+            <ul class="flex justify-center gap-5">
+                <li><a href="" class="link cursor-pointer hover:underline">Inicio</a></li>
+                <li><a href="habitacion" class="link cursor-pointer hover:underline">Habitaciones</a></li>
+                <li><a href="servicio" class="link cursor-pointer hover:underline ">Servicios</a></li>
+                <li><a href="contacto" class="link cursor-pointer hover:underline">Contacto</a></li>
+                <li><a href="reserva" class="link cursor-pointer hover:underline">Reservar</a></li>
+            </ul>
+        </div>
+        <div  class="flex justify-center gap-5 font-bold">
+            <a href="login" class="mr-5 text-black p-2 hover:text-gray-500 uppercase">Iniciarsesion</a>
+            <a href="registro" class="border-4 border-black text-black font-bold py-2 px-4 rounded-full align-middle transition duration-500 hover:bg-gray-300 hover:text-black uppercase">Registro</a>
+        </div>
+    </div>
+</header>
+<div>
+	<div class="bg-gray-300 lg:justify-start items-center " >
+        <h1 class="text-center font-bold text-4xl p-5 text-blue-800">
+            RESERVA
+        </h1>
+    </div>
+</div>
+<div class="text-justify bg-gray-200 ">
+    <p class="text-center p-2 text-2xl font-bold text-blue-600">Paso1: Registro Reserva</p>
+    <div class="input-group input-group-lg text-xl p-3">
+        <div class="grid grid-cols-2 ">
+            <div >
+                <label class="p-5">Localización</label>
+                <select name="Localización" id="Localización" class="bg-gray-300 border-2 px-8">
+                    <option  class="p-10" *ngFor="let item of lista">{{item.hotel.nombre}}</option>
+                </select>
+            </div>
+            <div>
+                <label class="p-5" >Fecha de entrada</label>
+                <input type="date" class="form-control bg-gray-300 border-2 ">
+            </div>
+            <div>
+                <label class="p-5" >Fecha de Salida</label>
+                <input type="date" class="form-control bg-gray-300 border-2 ">
+            </div>
+            <div>
+                <label class="p-2" >Precio : {{precioHabitacion}} </label>
+            </div>
+        </div>
+        <div class="grid grid-cols-5 p-4">   
+            <label class="p-5 flex" >Tipo de Habitación:</label>
+            <button (click)="ponerPrecio1()" class="border-2 border-black"> Personal </button>
+            <button (click)="ponerPrecio2()" class="border-2 border-black">Familiar</button>
+            <button (click)="ponerPrecio3()" class="border-2 border-black">Suit Ejecutiva</button>
+            <button (click)="ponerPrecio4()" class="border-2 border-black">Suit Presidencial</button>
+        </div> 
+    </div>
+</div>
+<div class="text-center items-center  w-full p-5 mx-auto bg-gray-400 shadow-3xl round px10 px-30">
+    <h1 class="text-2xl font-bold text-blue-600">Paso 2:  Registro datos Personales</h1>
+    <label class="text-lg">Nombres:</label>
+    <div class="h-8">
+        <input type="text" class="w-72" name="nombres" [(ngModel)]="nombres">
+    </div>
+    <label class="text-lg">Apellidos Paterno:</label>
+    <div class="h-8">
+        <input type="text" class="w-72" name="apellidoPaterno" [(ngModel)]="apellidoPaterno">
+    </div>
+    <label class="text-lg">Apellidos Materno:</label>
+    <div class="h-8">
+        <input type="text" class="w-72" name="apellidoMaterno" [(ngModel)]="apellidoMaterno">
+    </div>
+    <label class="text-lg">Tipo de Documento:</label>
+    <div class="h-8">
+        <input type="text" class="w-72" name="tipoDocumento" [(ngModel)]="tipoDocumento">
+    </div>
+    <label class="text-lg">Número de Documento:</label>
+    <div class="h-8">
+        <input type="number" class="w-72" name="numeroDocumento" [(ngModel)]="numeroDocumento">
+    </div>
+    <label class="text-lg">Dirección:</label>
+    <div class="h-8">
+        <input type="text" class="w-72" name="direcion" [(ngModel)]="direcion">
+    </div>
+    <label class="text-lg">Telefono:</label>
+    <div class="h-8">
+        <input type="number" class="w-72" name="telefono" [(ngModel)]="telefono">
+    </div>
+    <label class="text-lg w-72">Correo Electronico</label>
+    <div class="h-8">
+        <input type="email" class="w-72" name="correo" [(ngModel)]="correo">
+    </div>
+    <label class="text-lg" >Contraseña</label>
+    <div class="h-8">
+        <input type="password" class="w-72" name="credencial" [(ngModel)]="credencial">
+    </div>
+    <label class="text-lg" >Repetir Contraseña</label>
+    <div  class="h-8">
+        <input type="password" class="w-72 " name="credencialRepetida" [(ngModel)]="credencialRepetida">
+    </div>
+    <button class="text-2xl bg-gray-500 h-14 text-white rounden border-4 border-yellow-70 font-bold p-2 rounded-full align-middle transition duration-500 hover:bg-white hover:text-black" (click)="registrar()">
+        <a >Registrar Usuario</a>    
+    </button>
+</div>
+<p class="text-center font-bold">
+    {{mensaje}}
+</p>
+<div class="text-justify bg-gray-300 ">
+    <p class="text-center p-2 text-2xl font-bold text-blue-600">Paso3: Registror Pago</p>
+    <div class="text-center items-center">
+        <button class="text-2xl bg-gray-500 h-14 text-white rounden border-4 border-yellow-70 font-bold p-2 rounded-full align-middle transition duration-500 hover:bg-white hover:text-black" >
+            <a  href="pago">Continuar</a>    
+        </button>
+    </div>
+    <div class="text-center items-center">
+        <button class="text-2xl bg-gray-500 h-14 text-white rounden border-4 border-yellow-70 font-bold p-2 rounded-full align-middle transition duration-500 hover:bg-white hover:text-black" >
+            <a  href="">Cancelar Operación</a>  
+        </button>
+    </div>
+</div>
+<footer class="bg-gray-500">
+	<div class="container mx-auto text-center py-10 w-2/3">
+		<div class="p-1">
+			<p href="#" class="xl:text-2xl my-1 text-white font-black ">
+				Terminos y condiciones
+            </p>
+		</div>
+		<div class="text-white">
+			<pre class="text-justify ">
+§ Early Check-in y Late Check-out, sujeto a disponibilidad.
+
+§ Tipos de Reserva: Todo pago por adelantado en efectivo o con tarjeta de crédito garantiza la reserva, caso contrario 
+estará sujeta a disponibilidad a partir de las 18:00 hrs.
+
+§ Política de Garantía: El hotel procederá a realizar una pre-autorización a la tarjeta de crédito brindada como garantía 
+por el valor de la primera noche con 10% de servicios incluidos y si tuviera un servicio de recojo y/o traslados se 
+adicionará el valor del mismo.
+
+§ La tarifa incluye desayuno buffet en la cafetería / restaurant del hotel.
+
+§ Política de anulación de Reserva: 48 horas antes del día del arribo. Evitando de esta manera el cobro de la noche del No 
+Show.
+
+§ La hora de registro (Check in) será después de las 14:00 horas y la hora de salida (Check Out) sin cobró será antes de las
+12:00 horas.
+
+§ La tarifa arriba mencionada no incluye el 18% de I.G.V. ni el 10% de servicios.
+
+§ Servicio de WiFi gratuito disponible en habitaciones y áreas públicas del hotel.
+
+§ El corte de facturación y la cobranza para reservas de larga estadía, se realizarán semanalmente.
+
+§ Si el huésped es no residente y realiza él mismo el pago de sus gastos, se verá beneficiado con la exoneración del pago del 
+18% de impuestos en lo que ha gasto de alojamiento y alimentación se refiere, únicamente si tiene menos de 60 días en el año
+dentro del territorio peruano (Decreto Legislativo 919). A forma de control todos los huéspedes deberán presentar su pasaporte
+con el sello de migraciones al momento del check in.
+
+§ De conformidad con la Ley 28705 y su modificatoria, la ley 29517, está prohibido fumar en lugares públicos por ser dañino
+para la salud. En consecuencia, nuestros ambientes son 100% libres de humo de tabaco y de cualquier otra sustancia. En caso
+de infringir con lo aquí señalado se aplicará una penalidad de US $ 250 (Doscientos cincuenta y 00/100 Dólares Americanos)
+a todo huésped que fume dentro de las habitaciones.
+
+§ La demora en los pagos de las facturas por motivos que imputables al cliente que excedan al plazo de crédito acordado serán
+penalizadas con el cobro de intereses moratorios de acuerdo a ley.
+
+§ Nuestras tarifas se expresan en dólares americanos.
+
+§ Tipo de cambio referencial: S/ 3.40.
+
+§ Para un mejor entendimiento de nuestros clientes, sin embargo, por regulaciones oficiales la facturación será en moneda
+nacional al tipo de cambio del día utilizado en el Hotel.
+            </pre>
+		</div>
+	</div>
+</footer> -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de Hotel</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex flex-wrap justify-between items-center">
+            <div class="logo w-full sm:w-auto mb-4 sm:mb-0">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSvN9OyE98UW1W5_92EU64vyGYHTAKb4mZ6Y7AtZD9-wW-MwJZb2jTHHGVTP_Ajf_uGg&usqp=CAU" width="210" alt="Logo del Hotel" class="mx-auto sm:mx-0">
+            </div>
+            <nav class="w-full sm:w-auto">
+                <ul class="flex flex-wrap justify-center gap-5">
+                    <li><a href="" class="text-gray-700 hover:text-blue-600 transition duration-300">Inicio</a></li>
+                    <li><a href="habitacion" class="text-gray-700 hover:text-blue-600 transition duration-300">Habitaciones</a></li>
+                    <li><a href="servicio" class="text-gray-700 hover:text-blue-600 transition duration-300">Servicios</a></li>
+                    <li><a href="contacto" class="text-gray-700 hover:text-blue-600 transition duration-300">Contacto</a></li>
+                    <li><a href="reserva" class="text-gray-700 hover:text-blue-600 transition duration-300">Reservar</a></li>
+                </ul>
+            </nav>
+            <div class="flex justify-center gap-5 font-bold mt-4 sm:mt-0">
+                <a href="login" class="text-black hover:text-gray-500 uppercase transition duration-300">Iniciar sesión</a>
+                <a href="registro" class="border-2 border-black text-black py-2 px-4 rounded-full hover:bg-gray-300 transition duration-300 uppercase">Registro</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-center font-bold text-4xl mb-8 text-blue-800">RESERVA</h1>
+
+        <section class="bg-white shadow-md rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold text-blue-600 mb-6">Paso 1: Registro de Reserva</h2>
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="localizacion" class="block mb-2">Localización</label>
+                    <select id="localizacion" name="localizacion" class="w-full bg-gray-100 border border-gray-300 rounded-md p-2">
+                        <option>Seleccione un hotel</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="fecha-entrada" class="block mb-2">Fecha de entrada</label>
+                    <input type="date" id="fecha-entrada" name="fecha-entrada" class="w-full bg-gray-100 border border-gray-300 rounded-md p-2">
+                </div>
+                <div>
+                    <label for="fecha-salida" class="block mb-2">Fecha de Salida</label>
+                    <input type="date" id="fecha-salida" name="fecha-salida" class="w-full bg-gray-100 border border-gray-300 rounded-md p-2">
+                </div>
+                <div>
+                    <p class="mb-2">Precio: <span id="precio-habitacion">$0</span></p>
+                </div>
+            </form>
+            <div class="mt-6">
+                <h3 class="font-bold mb-2">Tipo de Habitación:</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <button class="border-2 border-black py-2 px-4 rounded hover:bg-gray-200 transition duration-300">Personal</button>
+                    <button class="border-2 border-black py-2 px-4 rounded hover:bg-gray-200 transition duration-300">Familiar</button>
+                    <button class="border-2 border-black py-2 px-4 rounded hover:bg-gray-200 transition duration-300">Suite Ejecutiva</button>
+                    <button class="border-2 border-black py-2 px-4 rounded hover:bg-gray-200 transition duration-300">Suite Presidencial</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white shadow-md rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold text-blue-600 mb-6">Paso 2: Registro de Datos Personales</h2>
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="nombres" class="block mb-2">Nombres:</label>
+                    <input type="text" id="nombres" name="nombres" class="w-full bg-gray-100 border border-gray-300 rounded-md p-2">
+                </div>
+                <div>
+                    <label for="apellido-paterno" class="block mb-2">Apellido Paterno:</label>
+                    <input type="text" id="apellido-paterno" name="apellido-paterno" class="w-full bg-gray-100 border border-gray-300 rounded-md p-2">
+                </div>
+                <div>
+                    <label for="apellido-materno" class="block mb-2">Apellido Materno:</label>
+                    <input type="text" id="apellido-materno" name="apellido-materno" class="w-full bg-gray-100 border border-gray-300 rounded-md p-2">
+                </div>
+                <div>
+                    <label for="tipo-documento" class="block mb-2">Tipo de Documento:</label>
+                    <input type="text" id="tipo-documento" name="tipo-documento" class="w-full bg-gray-100 border border-gray-300 rounded-md p-2">
+                </div>
+                <div>
+                    <label for="numero-documento" class="block mb-2">Número de Documento:</label>
+                    <input type="number" id="numero-documento" name="numero-documento" class="w-full bg-gray-100 border border-gray-300 rounded-md p-2">
+                </div>
+                <div>
+                    <label for="direccion" class="block mb-2">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion" class="w-full bg-gray-100 border border-gray-300 rounded-md p-2">
+                </div>
+                <div>
+                    <label for="telefono" class="block mb-2">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" class="w-full bg-gray-100 border border-gray-300 rounded-md p-2">
+                </div>
+                <div>
+                    <label for="correo" class="block mb-2">Correo Electrónico:</label>
+                    <input type="email" id="correo" name="correo" class="w-full bg-gray-100 border border-gray-300 rounded-md p-2">
+                </div>
+                <div>
+                    <label for="contrasena" class="block mb-2">Contraseña:</label>
+                    <input type="password" id="contrasena" name="contrasena" class="w-full bg-gray-100 border border-gray-300 rounded-md p-2">
+                </div>
+                <div>
+                    <label for="repetir-contrasena" class="block mb-2">Repetir Contraseña:</label>
+                    <input type="password" id="repetir-contrasena" name="repetir-contrasena" class="w-full bg-gray-100 border border-gray-300 rounded-md p-2">
+                </div>
+            </form>
+            <button class="mt-6 bg-blue-600 text-white py-2 px-6 rounded-full hover:bg-blue-700 transition duration-300">Registrar Usuario</button>
+        </section>
+
+        <section class="bg-white shadow-md rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold text-blue-600 mb-6">Paso 3: Registro de Pago</h2>
+            <div class="flex justify-center gap-4">
+                <a href="pago" class="bg-blue-600 text-white py-2 px-6 rounded-full hover:bg-blue-700 transition duration-300">Continuar</a>
+                <a href="" class="bg-gray-500 text-white py-2 px-6 rounded-full hover:bg-gray-600 transition duration-300">Cancelar Operación</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-4">Términos y condiciones</h2>
+            <div class="text-sm">
+                <p class="mb-2">§ Early Check-in y Late Check-out, sujeto a disponibilidad.</p>
+                <p class="mb-2">§ Tipos de Reserva: Todo pago por adelantado en efectivo o con tarjeta de crédito garantiza la reserva, caso contrario estará sujeta a disponibilidad a partir de las 18:00 hrs.</p>
+                <!-- Add more terms and conditions here -->
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<div class="font-sans bg-gray-50">
+	<!-- Encabezado -->
+	<div class="bg-gradient-to-r from-blue-600 to-indigo-700 py-6">
+	  <h1 class="text-center font-bold text-4xl md:text-5xl text-white tracking-wide">
+		Bienvenido, {{sesionUsuario.nombres}}
+	  </h1>
+	</div>
+  
+	<!-- Barra de navegación -->
+	<header class="bg-white shadow-lg sticky top-0 z-50">
+	  <div class="container mx-auto px-4">
+		<div class="flex flex-wrap items-center justify-between py-4">
+		  <div class="flex items-center">
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSvN9OyE98UW1W5_92EU64vyGYHTAKb4mZ6Y7AtZD9-wW-MwJZb2jTHHGVTP_Ajf_uGg&usqp=CAU" alt="Logo del hotel" class="h-10 w-auto mr-4">
+		  </div>
+		  <nav class="hidden md:flex space-x-6">
+			<a href="" class="text-gray-700 hover:text-blue-600 transition duration-300 font-medium">Inicio</a>
+			<a href="habitacion" class="text-gray-700 hover:text-blue-600 transition duration-300 font-medium">Habitaciones</a>
+			<a href="servicio" class="text-gray-700 hover:text-blue-600 transition duration-300 font-medium">Servicios</a>
+			<a href="contacto" class="text-gray-700 hover:text-blue-600 transition duration-300 font-medium">Contacto</a>
+			<a href="reserva" class="text-gray-700 hover:text-blue-600 transition duration-300 font-medium">Reservar</a>
+		  </nav>
+		  <div class="flex items-center space-x-4">
+			<a href="login" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300 shadow-md">Iniciar sesión</a>
+			<a href="registro" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300 shadow-md">Registro</a>
+		  </div>
+		  <button class="md:hidden bg-gray-200 p-2 rounded-md" id="mobile-menu-button">
+			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+			  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+			</svg>
+		  </button>
+		</div>
+		<div class="md:hidden hidden" id="mobile-menu">
+		  <div class="py-2 space-y-2">
+			<a href="" class="block text-gray-700 hover:text-blue-600 transition duration-300 font-medium">Inicio</a>
+			<a href="habitacion" class="block text-gray-700 hover:text-blue-600 transition duration-300 font-medium">Habitaciones</a>
+			<a href="servicio" class="block text-gray-700 hover:text-blue-600 transition duration-300 font-medium">Servicios</a>
+			<a href="contacto" class="block text-gray-700 hover:text-blue-600 transition duration-300 font-medium">Contacto</a>
+			<a href="reserva" class="block text-gray-700 hover:text-blue-600 transition duration-300 font-medium">Reservar</a>
+		  </div>
+		</div>
+	  </div>
+	</header>
+  
+	<!-- Imagen principal -->
+	<div class="relative h-[60vh] md:h-[70vh] overflow-hidden">
+	  <img class="w-full h-full object-cover" src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/196886570.jpg?k=4a89eed333f0ed121a0738dd6063407ec7e59e0040517b334d85402b4dec1cfa&o=&hp=1" alt="Imagen del hotel">
+	  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+		<h2 class="text-white text-4xl md:text-6xl font-bold text-center px-4 drop-shadow-lg">Tu escape perfecto comienza aquí</h2>
+	  </div>
+	</div>
+  
+	<!-- Formulario de reserva -->
+	<section class="bg-white py-16">
+	  <div class="container mx-auto px-4">
+		<h1 class="text-center text-3xl md:text-4xl font-bold mb-12 text-indigo-900">Reservar Ahora</h1>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+		  <div>
+			<label class="block text-gray-700 mb-2 font-medium">Localización</label>
+			<select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+			  <option *ngFor="let a of lista">{{a.hotel.ubicacion}}</option>
+			</select>
+		  </div>
+		  <div>
+			<label class="block text-gray-700 mb-2 font-medium">Fecha de entrada</label>
+			<input type="date" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+		  </div>
+		  <div>
+			<label class="block text-gray-700 mb-2 font-medium">Fecha de Salida</label>
+			<input type="date" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+		  </div>
+		  <div>
+			<label class="block text-gray-700 mb-2 font-medium">Tipo de Habitación</label>
+			<select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+			  <option>Personal</option>
+			  <option>Familiar</option>
+			  <option>Suit Ejecutiva</option>
+			  <option>Suit Presidencial</option>
+			</select>
+		  </div>
+		</div>
+		<div class="flex justify-center mt-10">
+		  <button class="bg-indigo-600 text-white px-8 py-3 rounded-md hover:bg-indigo-700 transition duration-300 text-lg font-semibold shadow-lg transform hover:scale-105">
+			RESERVAR
+		  </button>
+		</div>
+	  </div>
+	</section>
+  
+	<!-- Sección de hoteles -->
+	<section class="bg-gray-100 py-16">
+	  <div class="container mx-auto px-4">
+		<h2 class="text-center text-3xl md:text-4xl font-bold text-indigo-900 mb-12">NUESTROS HOTELES</h2>
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+		  <article class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105" *ngFor="let item of lista">
+			<img [src]="item.url" alt="Imagen del hotel" class="w-full h-48 object-cover">
+			<div class="p-6">
+			  <h3 class="text-xl font-bold text-indigo-900">{{item.hotel.nombre}}</h3>
+			</div>
+		  </article>
+		</div>
+	  </div>
+	</section>
+  
+	<!-- Pie de página -->
+	<footer class="bg-gray-800 text-white">
+	  <div class="container mx-auto py-12 px-4">
+		<div class="text-center max-w-3xl mx-auto">
+		  <h3 class="text-3xl font-bold mb-6">Acerca del hotel</h3>
+		  <p class="text-gray-400 leading-relaxed mb-6">
+			Somos una página web que compara los precios de hospedajes y las ofertas que nos proporcionan diversos sitios de reservaciones en línea. Comparamos y mostramos diferentes ofertas de muchos sitios de reservaciones, que nos pagan un cargo si un usuario hace clic en su oferta específica. No participamos en ningún acuerdo de reservación que tengas con el sitio u hospedaje. No recibimos ningún pago por tu estadía y no somos responsables de los servicios ofrecidos por el sitio de reservación y el proveedor de hospedaje.
+		  </p>
+		  <p class="text-gray-400">©2013-2021</p>
+		</div>
+	  </div>
+	</footer>
+  </div>
+  
+  <script>
+	document.getElementById('mobile-menu-button').addEventListener('click', function() {
+	  document.getElementById('mobile-menu').classList.toggle('hidden');
+	});
+  </script>

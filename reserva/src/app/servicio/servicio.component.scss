@@ -1,0 +1,15 @@
+.link{
+    @apply text-black block p-5 font-bold hover:text-yellow-500
+}
+
+.float { animation: float 3s ease-in-out infinite; }
+
+@keyframes shine {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+}
+.shine {
+    background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+    background-size: 200% auto;
+    animation: shine 3s linear infinite;
+}
